@@ -33,7 +33,11 @@ router.get('/products/:id', async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
         const item = await db.select().from(products).where(eq(products.id, +id));
-        res.json(item);
+        if (item.length === 0) {
+            res.status(404).json({ error: 'Product not found' });
+            return;
+        }
+        res.json(item[0]);
     } catch (err) {
         handleQueryError(err, res);
     }
