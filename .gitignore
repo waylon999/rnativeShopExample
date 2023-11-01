@@ -1,0 +1,48 @@
+# Ignore Node.js related files and directories
+**/node_modules/
+npm-debug.log
+
+# Ignore macOS hidden files
+.DS_Store
+
+# Ignore logs
+logs/
+*.log
+
+# Ignore build and bundling output
+*/build/
+*/dist/
+*.bundle.js
+*.bundle.map
+
+# Ignore environment files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.dev.env
+.prod.env
+
+# Ignore dependencies and lock files
+package-lock.json
+
+# Ignore IDE and text editor files
+.idea/
+.vscode/
+
+# Ignore Android and iOS build directories
+**/android/app/build/
+**/ios/Pods/
+ios/Podfile.lock
+
+# Ignore TypeScript and JavaScript compilation output
+*.tsbuildinfo
+*.js
+
+# Ignore Visual Studio Code settings
+.vscode/
+.settings.json
+
+# Ignore project-specific files
+# (You may need to customize this based on your project structure)
