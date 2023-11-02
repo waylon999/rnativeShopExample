@@ -40,7 +40,7 @@ export async function fetchProducts(): Promise<Product[]> {
 }
 
 
-export async function fetchProduct(id: number): Promise<Product> {
+export async function fetchProductDetails(id: number): Promise<Product> {
     try {
         console.log(`${API_URL}/products`);
         const response = await fetch(`${API_URL}/products/${id}`);
@@ -51,6 +51,26 @@ export async function fetchProduct(id: number): Promise<Product> {
         return data;
     } catch (error) {
         console.error('Error fetching products:', error);
+        throw error;
+    }
+}
+
+export async function createOrder(orderData: CreateOrder): Promise<Order | null> {
+    try {
+        const response = await fetch(`${API_URL}/orders`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(orderData),
+        });
+        if (!response.ok) {
+            throw new Error('Failed to create order');
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error creating order:', error);
         throw error;
     }
 }

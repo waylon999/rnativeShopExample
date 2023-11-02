@@ -1,7 +1,7 @@
 import { View, Text, FlatList, StyleSheet, TouchableOpacity, ListRenderItem } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { Product, fetchProducts } from '../../api/api';
-import { ProductsPageProps } from '../ProductsStack';
+import { Product, fetchProducts } from '../api/api';
+import { ProductsPageProps } from '../navigation/ProductsStack';
 import { Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -11,7 +11,6 @@ const Products = ({ navigation }: ProductsPageProps ) => {
   useEffect(() => {
     const load = async () => {
         const data = await fetchProducts();
-        console.log(" here is my data",data);
         setProducts(data);
     }
     load();
@@ -26,15 +25,14 @@ const Products = ({ navigation }: ProductsPageProps ) => {
   )
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
         <FlatList
             data={products}
             keyExtractor={(item) => item.id.toString()}
             numColumns={2}
             renderItem={renderProductItem}
         />
-
-    </SafeAreaView>
+    </View>
   )
 }
 
